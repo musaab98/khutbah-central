@@ -4,7 +4,7 @@ const { DeleteItemCommand } = require("@aws-sdk/client-dynamodb");
 const client = new DynamoDBClient({
   region: "us-east-1"  // Replace with your desired region if different
 });
-const TABLE_NAME = "kc-masjids";
+const TABLE_NAME = "kc-prayer-slots";
 
 exports.handler = async (event, context) => {
     const { id } = event.pathParameters;

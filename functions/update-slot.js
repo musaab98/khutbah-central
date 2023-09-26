@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
     };
   }
 
-  const tableName = "kc-slots"; 
+  const tableName = "kc-prayer-slots"; 
 
   const params = {
     TableName: tableName,

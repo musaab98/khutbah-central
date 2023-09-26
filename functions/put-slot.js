@@ -5,7 +5,7 @@ const client = new DynamoDBClient({
   region: "us-east-1"  // Replace with your desired region if different
 });
 
-const TABLE_NAME = "kc-slots";
+const TABLE_NAME = "kc-prayer-slots";
 
 exports.handler = async (event, context) => {
     const { id, masjidId, userId, status, timestamp, details } = JSON.parse(event.body);

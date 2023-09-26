@@ -6,7 +6,7 @@ const client = new DynamoDBClient({
 
 exports.handler = async (event, context) => {
   const params = {
-    TableName: "kc-slots"
+    TableName: "kc-prayer-slots"
   };
 
   try {
