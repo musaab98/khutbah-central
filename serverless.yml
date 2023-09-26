@@ -1,0 +1,157 @@
+service: khutbah-central
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [MasjidsDynamoDbTable, Arn]
+            - Fn::GetAtt: [KhutbahSlotsDynamoDbTable, Arn]
+            - Fn::GetAtt: [UsersDynamoDbTable, Arn] # Added Users Table to IAM Role
+
+functions:
+  # User API
+  register-user:
+    handler: functions/register-user.handler
+    events:
+      - http:
+          path: users
+          method: post
+          cors: true
+  login-user:
+    handler: functions/login-user.handler
+    events:
+      - http:
+          path: users/login
+          method: post
+          cors: true
+  # MASAJID API
+  get-masjids:
+    handler: functions/get-masjids.handler
+    events:
+      - http:
+          path: masjids
+          method: get
+          cors: true
+  put-masjid:
+    handler: functions/put-masjid.handler
+    events:
+      - http:
+          path: masjids
+          method: post
+          cors: true
+  delete-masjid:
+    handler: functions/delete-masjid.handler
+    events:
+      - http:
+          path: masjids/{id}
+          method: delete
+          cors: true
+  update-masjid:
+    handler: functions/update-masjid.handler
+    events:
+      - http:
+          path: masjids/{id}
+          method: patch
+          cors: true
+  # KHUTBAH API
+  get-khutbah-slots:
+    handler: functions/get-slots.handler
+    events:
+      - http:
+          path: slots
+          method: get
+          cors: true
+  put-khutbah-slot:
+    handler: functions/put-slot.handler
+    events:
+      - http:
+          path: slots
+          method: post
+          cors: true
+  delete-khutbah-slot:
+    handler: functions/delete-slot.handler
+    events:
+      - http:
+          path: slots/{id}
+          method: delete
+          cors: true
+  update-khutbah-slot:
+    handler: functions/update-slot.handler
+    events:
+      - http:
+          path: slots/{id}
+          method: patch
+          cors: true
+
+
+resources:
+  Resources:
+    UsersDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: kc-users
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    MasjidsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: kc-masjids
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    KhutbahSlotsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: kc-prayer-slots
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!src/**'
+    - '!public/**'
+    - '!.gitignore'
+    - '!package.json'
+    - '!package-lock.json'
+    - '!README.md'
+
+plugins:
+  - serverless-add-api-key
+  - serverless-dynamodb-local
+
+custom:
+  apiKeys:
+    - name: khutbah-central-admin-key
