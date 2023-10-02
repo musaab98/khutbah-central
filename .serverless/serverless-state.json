@@ -29,12 +29,6 @@
                 },
                 {
                   "Fn::GetAtt": [
-                    "KhutbahSlotsDynamoDbTable",
-                    "Arn"
-                  ]
-                },
-                {
-                  "Fn::GetAtt": [
                     "UsersDynamoDbTable",
                     "Arn"
                   ]
@@ -156,30 +150,6 @@
               "LogGroupName": "/aws/lambda/khutbah-central-dev-update-masjid"
             }
           },
-          "GetDashkhutbahDashslotsLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/khutbah-central-dev-get-khutbah-slots"
-            }
-          },
-          "PutDashkhutbahDashslotLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/khutbah-central-dev-put-khutbah-slot"
-            }
-          },
-          "DeleteDashkhutbahDashslotLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/khutbah-central-dev-delete-khutbah-slot"
-            }
-          },
-          "UpdateDashkhutbahDashslotLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/khutbah-central-dev-update-khutbah-slot"
-            }
-          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -268,7 +238,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/register-user.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/register-user.zip"
               },
               "Handler": "functions/register-user.handler",
               "Runtime": "nodejs18.x",
@@ -293,7 +263,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/login-user.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/login-user.zip"
               },
               "Handler": "functions/login-user.handler",
               "Runtime": "nodejs18.x",
@@ -318,7 +288,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/get-masjids.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/get-masjids.zip"
               },
               "Handler": "functions/get-masjids.handler",
               "Runtime": "nodejs18.x",
@@ -343,7 +313,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/put-masjid.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/put-masjid.zip"
               },
               "Handler": "functions/put-masjid.handler",
               "Runtime": "nodejs18.x",
@@ -368,7 +338,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/delete-masjid.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/delete-masjid.zip"
               },
               "Handler": "functions/delete-masjid.handler",
               "Runtime": "nodejs18.x",
@@ -393,7 +363,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/update-masjid.zip"
+                "S3Key": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z/update-masjid.zip"
               },
               "Handler": "functions/update-masjid.handler",
               "Runtime": "nodejs18.x",
@@ -411,204 +381,64 @@
               "UpdateDashmasjidLogGroup"
             ]
           },
-          "GetDashkhutbahDashslotsLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/get-khutbah-slots.zip"
-              },
-              "Handler": "functions/get-slots.handler",
-              "Runtime": "nodejs18.x",
-              "FunctionName": "khutbah-central-dev-get-khutbah-slots",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "GetDashkhutbahDashslotsLogGroup"
-            ]
-          },
-          "PutDashkhutbahDashslotLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/put-khutbah-slot.zip"
-              },
-              "Handler": "functions/put-slot.handler",
-              "Runtime": "nodejs18.x",
-              "FunctionName": "khutbah-central-dev-put-khutbah-slot",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "PutDashkhutbahDashslotLogGroup"
-            ]
-          },
-          "DeleteDashkhutbahDashslotLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/delete-khutbah-slot.zip"
-              },
-              "Handler": "functions/delete-slot.handler",
-              "Runtime": "nodejs18.x",
-              "FunctionName": "khutbah-central-dev-delete-khutbah-slot",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "DeleteDashkhutbahDashslotLogGroup"
-            ]
-          },
-          "UpdateDashkhutbahDashslotLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z/update-khutbah-slot.zip"
-              },
-              "Handler": "functions/update-slot.handler",
-              "Runtime": "nodejs18.x",
-              "FunctionName": "khutbah-central-dev-update-khutbah-slot",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "UpdateDashkhutbahDashslotLogGroup"
-            ]
-          },
-          "RegisterDashuserLambdaVersionkMez5ez21g4h3kj52QHh42UnHFX5pyK1mIPe3YfWdYI": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "RegisterDashuserLambdaFunction"
-              },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
-            }
-          },
-          "GetDashmasjidsLambdaVersionD6FGWyjMJIISjcezzEla32rHG5wwHyBETOJuFnoyQ": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetDashmasjidsLambdaFunction"
-              },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
-            }
-          },
-          "LoginDashuserLambdaVersionxu0M6PwEXGcSWhtt0UQtHdjzQ1UUwA0cgyfQ3814": {
+          "LoginDashuserLambdaVersione12c1q27kFFp2bQgSZIaGIYUTWMr5JB38pKEzq6l424": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LoginDashuserLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
-          "PutDashmasjidLambdaVersionnBOa8ipuBFNVoRgnytarwEWFEo9q38q735pSBKwyRsI": {
+          "RegisterDashuserLambdaVersionL9AseDn83HUxn6f9UrwMBzBWUqJ9AVGzLyRJZOwygCw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "PutDashmasjidLambdaFunction"
+                "Ref": "RegisterDashuserLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
-          "DeleteDashmasjidLambdaVersionZzPA1ctgajGjS7UK1TxWVOIRnSRaFKDGCXNuOcI9Ao": {
+          "DeleteDashmasjidLambdaVersionpG9LBDbFk8XeYyLh7mlr6wIhpwIUUcea4FQXU4jqEk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteDashmasjidLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
-          "GetDashkhutbahDashslotsLambdaVersionzsZqNiKDeGPfY2ikGTQ281nM6W2MJbUv6H3CvaYs": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetDashkhutbahDashslotsLambdaFunction"
-              },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
-            }
-          },
-          "UpdateDashmasjidLambdaVersion3PAVVNflfbvj8pVycBamQFqts4mNRLnbefXrYZYUec": {
+          "UpdateDashmasjidLambdaVersionZ7mPwGNGE2cz3wCZySl5LmO90AL63vd43sBW9CZRF8k": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateDashmasjidLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
-          "DeleteDashkhutbahDashslotLambdaVersionxzEl3tI5AOZ2qd8NvpeuVibNZvjSyR8u9HnQEhorg": {
+          "PutDashmasjidLambdaVersioneMNzczAuaFKJkzweJTHSxwn5RqMyjz33A2UUWl2Qfc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "DeleteDashkhutbahDashslotLambdaFunction"
+                "Ref": "PutDashmasjidLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
-          "UpdateDashkhutbahDashslotLambdaVersionfYuPI3kpEvPWlAetvYadwRry5OhpZRs8u0XxoDLZ4": {
+          "GetDashmasjidsLambdaVersionjxyryld7MCp5HhJxSDwzWaieTeXc7jqA6V5UjknIQU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "UpdateDashkhutbahDashslotLambdaFunction"
+                "Ref": "GetDashmasjidsLambdaFunction"
               },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
-            }
-          },
-          "PutDashkhutbahDashslotLambdaVersion3gw6I7k8xAaO0Uo6lQxmyOgyscW4Jb9brKvkNAH9gCQ": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "PutDashkhutbahDashslotLambdaFunction"
-              },
-              "CodeSha256": "Ky2m4H2jucop0BRTAmntnyPl/UCyVubCBhARAt8AsOA="
+              "CodeSha256": "z2eAiCRqxOQ1r1qeBkR9lSs1voRLopAIq8pkxmYvYTk="
             }
           },
           "ApiGatewayRestApi": {
@@ -670,33 +500,6 @@
             "Properties": {
               "ParentId": {
                 "Ref": "ApiGatewayResourceMasjids"
-              },
-              "PathPart": "{id}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceSlots": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "slots",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceSlotsIdVar": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceSlots"
               },
               "PathPart": "{id}",
               "RestApiId": {
@@ -878,96 +681,6 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceMasjidsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodSlotsOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": ""
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlots"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodSlotsIdVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,PATCH,DELETE'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": ""
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlotsIdVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -1250,191 +963,7 @@
               "UpdateDashmasjidLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayMethodSlotsGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlots"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "GetDashkhutbahDashslotsLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            },
-            "DependsOn": [
-              "GetDashkhutbahDashslotsLambdaPermissionApiGateway"
-            ]
-          },
-          "ApiGatewayMethodSlotsPost": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "POST",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlots"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "PutDashkhutbahDashslotLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            },
-            "DependsOn": [
-              "PutDashkhutbahDashslotLambdaPermissionApiGateway"
-            ]
-          },
-          "ApiGatewayMethodSlotsIdVarDelete": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "DELETE",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlotsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "DeleteDashkhutbahDashslotLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            },
-            "DependsOn": [
-              "DeleteDashkhutbahDashslotLambdaPermissionApiGateway"
-            ]
-          },
-          "ApiGatewayMethodSlotsIdVarPatch": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "PATCH",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSlotsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "UpdateDashkhutbahDashslotLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            },
-            "DependsOn": [
-              "UpdateDashkhutbahDashslotLambdaPermissionApiGateway"
-            ]
-          },
-          "ApiGatewayDeployment1695688160656": {
+          "ApiGatewayDeployment1696204773211": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1447,18 +976,12 @@
               "ApiGatewayMethodUsersLoginOptions",
               "ApiGatewayMethodMasjidsOptions",
               "ApiGatewayMethodMasjidsIdVarOptions",
-              "ApiGatewayMethodSlotsOptions",
-              "ApiGatewayMethodSlotsIdVarOptions",
               "ApiGatewayMethodUsersPost",
               "ApiGatewayMethodUsersLoginPost",
               "ApiGatewayMethodMasjidsGet",
               "ApiGatewayMethodMasjidsPost",
               "ApiGatewayMethodMasjidsIdVarDelete",
-              "ApiGatewayMethodMasjidsIdVarPatch",
-              "ApiGatewayMethodSlotsGet",
-              "ApiGatewayMethodSlotsPost",
-              "ApiGatewayMethodSlotsIdVarDelete",
-              "ApiGatewayMethodSlotsIdVarPatch"
+              "ApiGatewayMethodMasjidsIdVarPatch"
             ]
           },
           "RegisterDashuserLambdaPermissionApiGateway": {
@@ -1683,154 +1206,6 @@
               }
             }
           },
-          "GetDashkhutbahDashslotsLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "GetDashkhutbahDashslotsLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "PutDashkhutbahDashslotLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "PutDashkhutbahDashslotLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "DeleteDashkhutbahDashslotLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "DeleteDashkhutbahDashslotLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "UpdateDashkhutbahDashslotLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "UpdateDashkhutbahDashslotLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
           "UsersDynamoDbTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
@@ -1874,28 +1249,6 @@
                 "WriteCapacityUnits": 1
               }
             }
-          },
-          "KhutbahSlotsDynamoDbTable": {
-            "Type": "AWS::DynamoDB::Table",
-            "Properties": {
-              "TableName": "kc-prayer-slots",
-              "AttributeDefinitions": [
-                {
-                  "AttributeName": "id",
-                  "AttributeType": "S"
-                }
-              ],
-              "KeySchema": [
-                {
-                  "AttributeName": "id",
-                  "KeyType": "HASH"
-                }
-              ],
-              "ProvisionedThroughput": {
-                "ReadCapacityUnits": 1,
-                "WriteCapacityUnits": 1
-              }
-            }
           }
         },
         "Outputs": {
@@ -1907,94 +1260,58 @@
               "Name": "sls-khutbah-central-dev-ServerlessDeploymentBucketName"
             }
           },
-          "RegisterDashuserLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "RegisterDashuserLambdaVersionkMez5ez21g4h3kj52QHh42UnHFX5pyK1mIPe3YfWdYI"
-            },
-            "Export": {
-              "Name": "sls-khutbah-central-dev-RegisterDashuserLambdaFunctionQualifiedArn"
-            }
-          },
-          "GetDashmasjidsLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetDashmasjidsLambdaVersionD6FGWyjMJIISjcezzEla32rHG5wwHyBETOJuFnoyQ"
-            },
-            "Export": {
-              "Name": "sls-khutbah-central-dev-GetDashmasjidsLambdaFunctionQualifiedArn"
-            }
-          },
           "LoginDashuserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LoginDashuserLambdaVersionxu0M6PwEXGcSWhtt0UQtHdjzQ1UUwA0cgyfQ3814"
+              "Ref": "LoginDashuserLambdaVersione12c1q27kFFp2bQgSZIaGIYUTWMr5JB38pKEzq6l424"
             },
             "Export": {
               "Name": "sls-khutbah-central-dev-LoginDashuserLambdaFunctionQualifiedArn"
             }
           },
-          "PutDashmasjidLambdaFunctionQualifiedArn": {
+          "RegisterDashuserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "PutDashmasjidLambdaVersionnBOa8ipuBFNVoRgnytarwEWFEo9q38q735pSBKwyRsI"
+              "Ref": "RegisterDashuserLambdaVersionL9AseDn83HUxn6f9UrwMBzBWUqJ9AVGzLyRJZOwygCw"
             },
             "Export": {
-              "Name": "sls-khutbah-central-dev-PutDashmasjidLambdaFunctionQualifiedArn"
+              "Name": "sls-khutbah-central-dev-RegisterDashuserLambdaFunctionQualifiedArn"
             }
           },
           "DeleteDashmasjidLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteDashmasjidLambdaVersionZzPA1ctgajGjS7UK1TxWVOIRnSRaFKDGCXNuOcI9Ao"
+              "Ref": "DeleteDashmasjidLambdaVersionpG9LBDbFk8XeYyLh7mlr6wIhpwIUUcea4FQXU4jqEk"
             },
             "Export": {
               "Name": "sls-khutbah-central-dev-DeleteDashmasjidLambdaFunctionQualifiedArn"
             }
           },
-          "GetDashkhutbahDashslotsLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetDashkhutbahDashslotsLambdaVersionzsZqNiKDeGPfY2ikGTQ281nM6W2MJbUv6H3CvaYs"
-            },
-            "Export": {
-              "Name": "sls-khutbah-central-dev-GetDashkhutbahDashslotsLambdaFunctionQualifiedArn"
-            }
-          },
           "UpdateDashmasjidLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateDashmasjidLambdaVersion3PAVVNflfbvj8pVycBamQFqts4mNRLnbefXrYZYUec"
+              "Ref": "UpdateDashmasjidLambdaVersionZ7mPwGNGE2cz3wCZySl5LmO90AL63vd43sBW9CZRF8k"
             },
             "Export": {
               "Name": "sls-khutbah-central-dev-UpdateDashmasjidLambdaFunctionQualifiedArn"
             }
           },
-          "DeleteDashkhutbahDashslotLambdaFunctionQualifiedArn": {
+          "PutDashmasjidLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteDashkhutbahDashslotLambdaVersionxzEl3tI5AOZ2qd8NvpeuVibNZvjSyR8u9HnQEhorg"
+              "Ref": "PutDashmasjidLambdaVersioneMNzczAuaFKJkzweJTHSxwn5RqMyjz33A2UUWl2Qfc"
             },
             "Export": {
-              "Name": "sls-khutbah-central-dev-DeleteDashkhutbahDashslotLambdaFunctionQualifiedArn"
+              "Name": "sls-khutbah-central-dev-PutDashmasjidLambdaFunctionQualifiedArn"
             }
           },
-          "UpdateDashkhutbahDashslotLambdaFunctionQualifiedArn": {
+          "GetDashmasjidsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateDashkhutbahDashslotLambdaVersionfYuPI3kpEvPWlAetvYadwRry5OhpZRs8u0XxoDLZ4"
+              "Ref": "GetDashmasjidsLambdaVersionjxyryld7MCp5HhJxSDwzWaieTeXc7jqA6V5UjknIQU"
             },
             "Export": {
-              "Name": "sls-khutbah-central-dev-UpdateDashkhutbahDashslotLambdaFunctionQualifiedArn"
-            }
-          },
-          "PutDashkhutbahDashslotLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "PutDashkhutbahDashslotLambdaVersion3gw6I7k8xAaO0Uo6lQxmyOgyscW4Jb9brKvkNAH9gCQ"
-            },
-            "Export": {
-              "Name": "sls-khutbah-central-dev-PutDashkhutbahDashslotLambdaFunctionQualifiedArn"
+              "Name": "sls-khutbah-central-dev-GetDashmasjidsLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -2162,7 +1479,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "RegisterDashuserLambdaVersionkMez5ez21g4h3kj52QHh42UnHFX5pyK1mIPe3YfWdYI"
+        "versionLogicalId": "RegisterDashuserLambdaVersionL9AseDn83HUxn6f9UrwMBzBWUqJ9AVGzLyRJZOwygCw"
       },
       "login-user": {
         "handler": "functions/login-user.handler",
@@ -2204,7 +1521,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "LoginDashuserLambdaVersionxu0M6PwEXGcSWhtt0UQtHdjzQ1UUwA0cgyfQ3814"
+        "versionLogicalId": "LoginDashuserLambdaVersione12c1q27kFFp2bQgSZIaGIYUTWMr5JB38pKEzq6l424"
       },
       "get-masjids": {
         "handler": "functions/get-masjids.handler",
@@ -2246,7 +1563,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "GetDashmasjidsLambdaVersionD6FGWyjMJIISjcezzEla32rHG5wwHyBETOJuFnoyQ"
+        "versionLogicalId": "GetDashmasjidsLambdaVersionjxyryld7MCp5HhJxSDwzWaieTeXc7jqA6V5UjknIQU"
       },
       "put-masjid": {
         "handler": "functions/put-masjid.handler",
@@ -2288,7 +1605,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "PutDashmasjidLambdaVersionnBOa8ipuBFNVoRgnytarwEWFEo9q38q735pSBKwyRsI"
+        "versionLogicalId": "PutDashmasjidLambdaVersioneMNzczAuaFKJkzweJTHSxwn5RqMyjz33A2UUWl2Qfc"
       },
       "delete-masjid": {
         "handler": "functions/delete-masjid.handler",
@@ -2330,7 +1647,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "DeleteDashmasjidLambdaVersionZzPA1ctgajGjS7UK1TxWVOIRnSRaFKDGCXNuOcI9Ao"
+        "versionLogicalId": "DeleteDashmasjidLambdaVersionpG9LBDbFk8XeYyLh7mlr6wIhpwIUUcea4FQXU4jqEk"
       },
       "update-masjid": {
         "handler": "functions/update-masjid.handler",
@@ -2372,175 +1689,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "UpdateDashmasjidLambdaVersion3PAVVNflfbvj8pVycBamQFqts4mNRLnbefXrYZYUec"
-      },
-      "get-khutbah-slots": {
-        "handler": "functions/get-slots.handler",
-        "package": {
-          "individually": true,
-          "include": [
-            "functions/register-user.js"
-          ],
-          "artifact": "/Users/musaab/Projects/khutbah-central/.serverless/get-khutbah-slots.zip"
-        },
-        "events": [
-          {
-            "http": {
-              "path": "slots",
-              "method": "get",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent",
-                  "X-Amzn-Trace-Id"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "khutbah-central-dev-get-khutbah-slots",
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs18.x",
-        "vpc": {},
-        "versionLogicalId": "GetDashkhutbahDashslotsLambdaVersionzsZqNiKDeGPfY2ikGTQ281nM6W2MJbUv6H3CvaYs"
-      },
-      "put-khutbah-slot": {
-        "handler": "functions/put-slot.handler",
-        "package": {
-          "individually": true,
-          "include": [
-            "functions/register-user.js"
-          ],
-          "artifact": "/Users/musaab/Projects/khutbah-central/.serverless/put-khutbah-slot.zip"
-        },
-        "events": [
-          {
-            "http": {
-              "path": "slots",
-              "method": "post",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "POST"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent",
-                  "X-Amzn-Trace-Id"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "khutbah-central-dev-put-khutbah-slot",
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs18.x",
-        "vpc": {},
-        "versionLogicalId": "PutDashkhutbahDashslotLambdaVersion3gw6I7k8xAaO0Uo6lQxmyOgyscW4Jb9brKvkNAH9gCQ"
-      },
-      "delete-khutbah-slot": {
-        "handler": "functions/delete-slot.handler",
-        "package": {
-          "individually": true,
-          "include": [
-            "functions/register-user.js"
-          ],
-          "artifact": "/Users/musaab/Projects/khutbah-central/.serverless/delete-khutbah-slot.zip"
-        },
-        "events": [
-          {
-            "http": {
-              "path": "slots/{id}",
-              "method": "delete",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "DELETE"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent",
-                  "X-Amzn-Trace-Id"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "khutbah-central-dev-delete-khutbah-slot",
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs18.x",
-        "vpc": {},
-        "versionLogicalId": "DeleteDashkhutbahDashslotLambdaVersionxzEl3tI5AOZ2qd8NvpeuVibNZvjSyR8u9HnQEhorg"
-      },
-      "update-khutbah-slot": {
-        "handler": "functions/update-slot.handler",
-        "package": {
-          "individually": true,
-          "include": [
-            "functions/register-user.js"
-          ],
-          "artifact": "/Users/musaab/Projects/khutbah-central/.serverless/update-khutbah-slot.zip"
-        },
-        "events": [
-          {
-            "http": {
-              "path": "slots/{id}",
-              "method": "patch",
-              "cors": {
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "PATCH"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent",
-                  "X-Amzn-Trace-Id"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "khutbah-central-dev-update-khutbah-slot",
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs18.x",
-        "vpc": {},
-        "versionLogicalId": "UpdateDashkhutbahDashslotLambdaVersionfYuPI3kpEvPWlAetvYadwRry5OhpZRs8u0XxoDLZ4"
+        "versionLogicalId": "UpdateDashmasjidLambdaVersionZ7mPwGNGE2cz3wCZySl5LmO90AL63vd43sBW9CZRF8k"
       }
     },
     "resources": {
@@ -2588,28 +1737,6 @@
               "WriteCapacityUnits": 1
             }
           }
-        },
-        "KhutbahSlotsDynamoDbTable": {
-          "Type": "AWS::DynamoDB::Table",
-          "Properties": {
-            "TableName": "kc-prayer-slots",
-            "AttributeDefinitions": [
-              {
-                "AttributeName": "id",
-                "AttributeType": "S"
-              }
-            ],
-            "KeySchema": [
-              {
-                "AttributeName": "id",
-                "KeyType": "HASH"
-              }
-            ],
-            "ProvisionedThroughput": {
-              "ReadCapacityUnits": 1,
-              "WriteCapacityUnits": 1
-            }
-          }
         }
       },
       "Outputs": {}
@@ -2639,7 +1766,7 @@
           "!README.md"
         ],
         "artifactsS3KeyDirname": "serverless/khutbah-central/dev/code-artifacts",
-        "artifactDirectoryName": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z"
+        "artifactDirectoryName": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z"
       },
       "plugins": {
         "$ref": "$[\"service\"][\"plugins\"]"
@@ -2652,7 +1779,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/khutbah-central/dev/1695688162824-2023-09-26T00:29:22.824Z",
+    "artifactDirectoryName": "serverless/khutbah-central/dev/1696204775416-2023-10-01T23:59:35.416Z",
     "artifact": ""
   }
 }

@@ -17,7 +17,6 @@ provider:
             - dynamodb:DeleteItem
           Resource:
             - Fn::GetAtt: [MasjidsDynamoDbTable, Arn]
-            - Fn::GetAtt: [KhutbahSlotsDynamoDbTable, Arn]
             - Fn::GetAtt: [UsersDynamoDbTable, Arn] # Added Users Table to IAM Role
 
 functions:
@@ -89,51 +88,6 @@ functions:
           path: masjids/{id}
           method: patch
           cors: true
-  # KHUTBAH API
-  get-khutbah-slots:
-    handler: functions/get-slots.handler
-    package:
-      individually: true
-      include:
-        - functions/register-user.js
-    events:
-      - http:
-          path: slots
-          method: get
-          cors: true
-  put-khutbah-slot:
-    handler: functions/put-slot.handler
-    package:
-      individually: true
-      include:
-        - functions/register-user.js
-    events:
-      - http:
-          path: slots
-          method: post
-          cors: true
-  delete-khutbah-slot:
-    handler: functions/delete-slot.handler
-    package:
-      individually: true
-      include:
-        - functions/register-user.js
-    events:
-      - http:
-          path: slots/{id}
-          method: delete
-          cors: true
-  update-khutbah-slot:
-    handler: functions/update-slot.handler
-    package:
-      individually: true
-      include:
-        - functions/register-user.js
-    events:
-      - http:
-          path: slots/{id}
-          method: patch
-          cors: true
 
 
 resources:
@@ -155,19 +109,6 @@ resources:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         TableName: kc-masjids
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-    KhutbahSlotsDynamoDbTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        TableName: kc-prayer-slots
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

@@ -9,19 +9,27 @@ exports.handler = async (event, context) => {
   if (!event.pathParameters || !event.pathParameters.id) {
     return {
       statusCode: 400,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "access-control-allow-origin": "*" },
       body: JSON.stringify({ message: 'Masjid ID must be provided' })
     };
   }
 
   const id = event.pathParameters.id;
   const body = JSON.parse(event.body);
+  
+  const { address, khutbahs } = JSON.parse(event.body);
+  const formattedKhutbahs = khutbahs.map(khutbah => ({
+    M: {
+      timeSlot: { S: khutbah.timeSlot },
+      speaker: khutbah.speaker ? { S: khutbah.speaker } : { NULL: true }
+    }
+  }));
 
-  if (!body || !body.address || !body.times || !body.adminId) {
+  if (!body || !body.address || !body.khutbahs) {
     return {
       statusCode: 400,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: 'Address, times, and adminId must be provided in the request body' })
+      headers: { "Content-Type": "application/json", "access-control-allow-origin": "*" },
+      body: JSON.stringify({ message: 'Address and khutbahs must be provided in the request body' })
     };
   }
 
@@ -32,11 +40,10 @@ exports.handler = async (event, context) => {
     Key: {
       id: { S: id },
     },
-    UpdateExpression: "SET address = :a, times = :t, adminId = :ad",
+    UpdateExpression: "SET address = :a, khutbahs = :k",
     ExpressionAttributeValues: {
-      ":a": { S: body.address },
-      ":t": { S: body.times },
-      ":ad": { S: body.adminId },
+      ":a": { S: address },
+      ":k": { L: formattedKhutbahs },
     },
     ReturnValues: "UPDATED_NEW",
   };

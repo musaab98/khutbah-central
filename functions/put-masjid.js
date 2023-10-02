@@ -7,10 +7,16 @@ const client = new DynamoDBClient({
 const TABLE_NAME = "kc-masjids";
 
 exports.handler = async (event, context) => {
-    const { id, address, times, adminId } = JSON.parse(event.body);
+    const { id, address, khutbahs } = JSON.parse(event.body);
+    const formattedKhutbahs = khutbahs.map(khutbah => ({
+      M: {
+        timeSlot: { S: khutbah.timeSlot },
+        speaker: khutbah.speaker ? { S: khutbah.speaker } : { NULL: true }
+      }
+    }));
 
     // Check for required fields
-    if(!id || !address || !times || !adminId) {
+    if(!id || !address || !khutbahs) {
         return {
             statusCode: 400,  // Bad Request
             headers: {
@@ -26,8 +32,7 @@ exports.handler = async (event, context) => {
         Item: {
             id: { S: id },                          // NAME
             address: { S: address },                // ADDRESS
-            times: { L: times },                    // TIMES
-            adminId: { S: adminId },                // ADMINID
+            khutbahs: { L: formattedKhutbahs },              // KHUTBAHS
         },
     };
 
