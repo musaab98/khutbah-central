@@ -1,24 +1,13 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import { Container } from "reactstrap";
 import './App.css';
 
 function App() {
+  const [selectedMasjid, setSelectedMasjid] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Khutbah Central
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+    </Container>
   );
 }
 
