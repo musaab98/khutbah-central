@@ -2,7 +2,8 @@
   text-align: center;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -22,6 +23,7 @@ body, html {
 h1 {
   font-size: 2.5em;
 }
+
 h2 {
   font-size: 2em;
 }
@@ -32,24 +34,29 @@ h2 {
 
 .project-card-container {
   position: relative;
-  height: 100%; /* take the full height of its parent */
+  height: 100%;
+  /* take the full height of its parent */
 }
 
 .card {
   position: absolute;
-  top: -15vh; /* Adjust this value to move the card up */
-  width: 100%; /* make sure the width is 100% of its container */
+  top: -15vh;
+  /* Adjust this value to move the card up */
+  width: 100%;
+  /* make sure the width is 100% of its container */
 }
 
 .custom-card-header-title {
-  font-size: 1.5rem; /* Adjust as needed */
+  font-size: 1.5rem;
+  /* Adjust as needed */
 }
 
 .two-columns-list {
   columns: 3;
   -webkit-columns: 3;
   -moz-columns: 3;
-  list-style-type: none; /* To remove the bullets */
+  list-style-type: none;
+  /* To remove the bullets */
   padding: 0;
 }
 
@@ -68,9 +75,12 @@ h2 {
   border: none;
   border-bottom: 1px solid #cacaca;
   text-align: left;
-  width: 100%; /* make the button fill the width of the container */
-  display: block; /* display button as block to stack them vertically */
-  margin-bottom: 0px; /* space between buttons */
+  width: 100%;
+  /* make the button fill the width of the container */
+  display: block;
+  /* display button as block to stack them vertically */
+  margin-bottom: 0px;
+  /* space between buttons */
   border-radius: 0px;
 }
 
@@ -94,38 +104,50 @@ h2 {
 
 /* Define styles for night mode */
 .night-mode {
-  background-color: #1a1a1a; /* dark grey background */
-  color: #e0e0e0; /* light grey text color */
+  background-color: #1a1a1a;
+  /* dark grey background */
+  color: #e0e0e0;
+  /* light grey text color */
 }
 
 .night-mode .navbar {
-  background-color: #333333; /* slightly lighter dark grey for navbar */
+  background-color: #333333;
+  /* slightly lighter dark grey for navbar */
 }
 
 .night-mode .button {
-  background-color: #333333; /* Button Background Color */
-  color: #e0e0e0; /* Button Text Color */
-  border-color: #4a4a4a; /* Dark grey border */
+  background-color: #333333;
+  /* Button Background Color */
+  color: #e0e0e0;
+  /* Button Text Color */
+  border-color: #4a4a4a;
+  /* Dark grey border */
 }
 
 .night-mode .button:hover {
-  background-color: #4a4a4a; /* slightly lighter grey when hovering over button */
+  background-color: #4a4a4a;
+  /* slightly lighter grey when hovering over button */
 }
 
-body.night-mode, html.night-mode {
-  background-color: #1a1a1a; /* Dark mode background color */
-  color: white; /* Dark mode text color */
+body.night-mode,
+html.night-mode {
+  background-color: #1a1a1a;
+  /* Dark mode background color */
+  color: white;
+  /* Dark mode text color */
 }
 
-body.night-mode .card .card-header, 
+body.night-mode .card .card-header,
 html.night-mode .card .card-header {
-  background-color: #282c34; /* or the color of your navbar in night mode */
+  background-color: #282c34;
+  /* or the color of your navbar in night mode */
 }
 
 /* Night mode card content */
-body.night-mode .card .card-content, 
+body.night-mode .card .card-content,
 html.night-mode .card .card-content {
-  background-color: #212121; /* or any color slightly lighter than the main background */
+  background-color: #212121;
+  /* or any color slightly lighter than the main background */
 }
 
 
