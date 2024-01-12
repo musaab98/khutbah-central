@@ -5,6 +5,7 @@ import 'bulma/css/bulma.min.css';
 export default class Home extends Component {
 
   render() {
+    // console.log({'abcdef': 'HELLO WORLD!!!'}['abcdef']);
     return (
       // <div className="columns is-vcentered" style={{paddingLeft: '20px', paddingRight: '20px'}}>
       <div className="admin-container">
